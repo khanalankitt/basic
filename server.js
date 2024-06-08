@@ -5,12 +5,17 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 const url = process.env.URL;
 
-
 mongoose.connect(url)
-    .then(() => console.log('Connected to db'))
+    .then(() => {
+        console.log('Connected to db')
+        app.listen(3000, () => {
+            console.log(`Server is running on port 3000`);
+        });
+    })
     .catch(err => {
         console.error('MongoDB connection error:', err);
         process.exit(1);
@@ -90,10 +95,6 @@ app.use((req, res) => {
     res.status(404).render('error');
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
 
 
 module.exports = app;
