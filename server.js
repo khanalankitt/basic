@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Fact = require('./models/blog'); 
 const app = express();
+const path = require('path');
 
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
