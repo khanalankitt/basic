@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+</head>
+<body>
+    <h1>Home Page</h1>
+    <%- include('./nav.ejs') %>
+    <div class="facts">
+        <h1>Facts</h1>
+        <ul>
+            <% if(facts.length != 0){ %>
+                <% facts.forEach(fact => { %>
+                    <a href="/facts/<%= fact._id%>">
+                        <li>
+                            Name: <%= fact.name%><br>
+                            Fact: <%= fact.fact%>
+                        </li>
+                    </a>
+                    <br>
+                <% }) %>
+            <% }else{ %>
+                <p>No Facts</p>
+                <% } %>
+        </ul>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+</head>
+<body>
+    <h1>Create Page</h1>
+    <%- include('./nav.ejs') %>
+    <form action="/facts" method="post">
+        <label for="name">Name</label><br>
+        <input type="text" name="name" id="name"><br>
+        <label for="fact">Fact</label><br>
+        <input type="text" name="fact" id="fact"><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

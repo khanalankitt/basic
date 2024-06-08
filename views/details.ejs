@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+</head>
+<body>
+    <h1>Details</h1>
+    <%- include('./nav.ejs') %>
+    <div class="fact">
+            <h1><%= fact.name %></h1>
+            <p><%= fact.fact %></p>
+            <a class="a" data-doc="<%- fact._id%>">
+                <button>
+                    Delete
+                </button>
+            </a>
+            <a href="/modify/<%- fact._id%>">
+                <button>Modify</button>
+            </a>
+        </form>
+    </div>    
+    <script>
+        const del = document.querySelector('.a');
+        del.addEventListener('click',()=>{
+            const id = del.getAttribute('data-doc');
+            fetch(`/facts/${id}`,{
+                method:'DELETE'
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                window.location.href =data.redirect;
+            })
+        })
+
+        
+    </script>
+</body>
+</html>
